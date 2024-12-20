@@ -1,15 +1,33 @@
 name: Dart CI
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Dart environment
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
+
+      # Install dependencies from pubspec.yaml
       - name: Install dependencies
         run: dart pub get
+
+      # Run tests
       - name: Run tests
         run: dart test
+
+      # Optionally, you can build or perform additional tasks here
+      # - name: Build the project
+      #   run: flutter build apk
