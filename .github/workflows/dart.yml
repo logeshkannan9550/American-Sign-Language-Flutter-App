@@ -1,6 +1,6 @@
-name: Dart CI
+name: Flutter CI
 
-on: 
+on:
   push:
     branches:
       - main
@@ -16,18 +16,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Set up Dart environment
-      - name: Set up Dart
-        uses: dart-lang/setup-dart@v1
+      # Set up Flutter environment
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.6.0' # Use the appropriate Flutter version for your project
 
-      # Install dependencies from pubspec.yaml
+      # Install dependencies (flutter pub get)
       - name: Install dependencies
         run: flutter pub get
 
       # Run tests
       - name: Run tests
-        run: dart test
-
-      # Optionally, you can build or perform additional tasks here
-      # - name: Build the project
-      #   run: flutter build apk
+        run: flutter test
