@@ -22,7 +22,7 @@ jobs:
 
       # Install dependencies from pubspec.yaml
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       # Run tests
       - name: Run tests
